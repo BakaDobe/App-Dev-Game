@@ -18,54 +18,23 @@ namespace AppDevGame
         }
 
         bool left, right, jump;
-        int force, speed, score;
+        int force, speed;
         int frame = 1;
 
 
-        void GameResult()
-        {
-            foreach(Control j in this.Controls)
-            {
-                if(j is PictureBox && j.Tag == "enemy")
-                {
-                    foreach(Control x in this.Controls)
-                    {
-                        if(x is PictureBox && x.Tag == "currency")
-                        {
-                            if (astronaut.Bounds.IntersectsWith(x.Bounds))
-                            {
-                                x.Dispose();
-                                score++;
-                                scoreLabel.Text = "Score: " + score;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         void Enemys()
         {
-            /*if (en1.Left > 200)
+            if(en1.Left > 600)
             {
                 speed -= 1;
             }
-            if (en1.Left < 250)
-            {
-                speed = 1;
-            }*/
-            if (en2.Left > 580)
-            {
-                speed -= 1;
-            }
-            if(en2.Left < 250)
+            if(en1.Left < 200)
             {
                 speed = 1;
             }
-            en5 .Left += speed;
+            en1.Left += speed;
             en2.Left += speed;
-            /*en2.Left += speed;
-            en3.Left += speed;*/
+            en3.Left += speed;
 
 
         }
@@ -78,7 +47,6 @@ namespace AppDevGame
         private void GameTimer_Tick(object sender, EventArgs e)
         {
             Enemys();
-            GameResult();
             if (right == true)
             {
                 if (astronaut.Left < 615)
